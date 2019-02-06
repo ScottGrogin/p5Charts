@@ -24,7 +24,24 @@ class Chart{
         return total;
         
     }
- 
+    BarGraph(scale, sideLabel){
+        textAlign(RIGHT);
+        textSize(this.fontSize);
+        rect(this.x,this.y,this.size,this.size);
+        let max = this.dataLabel[0].value;
+        for(let i=0;i<this.dataLabel.length;i++){
+            if(this.dataLabel[i].value > max){
+                max = this.dataLabel[i].value; 
+            }
+        }
+        
+       for(let i =1, j = 1; i <= max; i+=scale,j+=2){
+           if(-j*this.fontSize  + (this.y+this.size)  > this.y){
+            text( i,this.x, -j*this.fontSize + (this.y+this.size)  );   
+           }
+       }
+    }
+    
     Title(title, x, y) {
         textAlign(CENTER, TOP);
         text(title,x,y);
@@ -153,3 +170,4 @@ class Chart{
     
     
 }
+
